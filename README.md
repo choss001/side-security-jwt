@@ -11,12 +11,6 @@ ROLE		VARCHAR(20)
 
 
 insert into member VALUES("jss", "$2a$10$nmyDUQNFPXHjlohao1P5.uDHZJPt7GDDmStpfAgUnSFQCcDH3oaiy", "ADMIN"); 
-SELECT
-			ID, PASSWORD, ROLE
-		FROM member
-		WHERE ID = "jss";
-commit;
-
 
 
 localhost:8080/login
