@@ -1,0 +1,144 @@
+
+redis:
+  addresses: 15.165.192.241
+  port: 6379
+  password: dbfrhrfh1rk!
+
+
+---
+######################
+#       local        # 
+######################
+spring:
+  # Profile
+  profiles: default
+  
+  # Database
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    fairQueue: false
+    initSQL: ''
+    initialSize: 0
+    jmxEnabled: true
+    logAbandoned: false
+    maxActive: 8
+    maxIdle: 8
+    maxWait: 6000
+    minEvictableIdleTimeMillis: 30000
+    minIdle: 0
+    password: dbfrhrfh1rk!
+    removeAbandoned: false
+    removeAbandonedTimeout: 60
+    datasourceInterceptors: ''
+    testOnBorrow: true
+    testOnReturn: false
+    testWhileIdle: false
+    timeBetweenEvictionRunsMillis: 30000
+    url: jdbc:mysql://oneplat.asuscomm.com:3306/pass_smishing_db?serverTimeZone=UTC&useSSL=false
+    useEquals: false
+    username: admin
+    validationQuery: SELECT 1
+    validationQueryTimeout: 10000
+
+
+server:
+  port: 8888
+
+redis:
+  addresses: 127.0.0.1
+  port: 6379
+  password:   
+
+host:
+ auth:
+  url: http://127.0.0.1:8090
+  verification: /info
+  
+  
+---
+######################
+#       dev          # 
+######################
+
+spring:
+  # Profile
+  profiles: dev
+  
+  # Database
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    fairQueue: false
+    initSQL: ''
+    initialSize: 0
+    jmxEnabled: true
+    logAbandoned: false
+    maxActive: 8
+    maxIdle: 8
+    maxWait: 6000
+    minEvictableIdleTimeMillis: 30000
+    minIdle: 0
+    password: dbfrhrfh1rk!
+    removeAbandoned: false
+    removeAbandonedTimeout: 60
+    datasourceInterceptors: ''
+    testOnBorrow: true
+    testOnReturn: false
+    testWhileIdle: false
+    timeBetweenEvictionRunsMillis: 30000
+    url: jdbc:mysql://oneplat.asuscomm.com:3306/pass_smishing_db?serverTimeZone=UTC&useSSL=false
+    useEquals: false
+    username: admin
+    validationQuery: SELECT 1
+    validationQueryTimeout: 10000
+
+
+server:
+  port: 8888
+  host: http://oneplat.asuscomm.com
+
+  
+---
+######################
+#       prd          # 
+######################
+
+spring:
+  # Profile
+  profiles: prd
+  
+  # Database
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    fairQueue: false
+    initSQL: ''
+    initialSize: 0
+    jmxEnabled: true
+    logAbandoned: false
+    maxActive: 8
+    maxIdle: 8
+    maxWait: 6000
+    minEvictableIdleTimeMillis: 30000
+    minIdle: 0
+    password: dbfrhrfh1rk!
+    removeAbandoned: false
+    removeAbandonedTimeout: 60
+    datasourceInterceptors: ''
+    testOnBorrow: true
+    testOnReturn: false
+    testWhileIdle: false
+    timeBetweenEvictionRunsMillis: 30000
+    url: jdbc:mysql://oneplat.asuscomm.com:3306/pass_smishing_db?serverTimeZone=UTC&useSSL=false
+    useEquals: false
+    username: admin
+    validationQuery: SELECT 1
+    validationQueryTimeout: 10000
+
+
+server:
+  port: 8888
+  host: http://oneplat.asuscomm.com
+
+  # Security
+  security.user:
+   name: oneplat
+   password: dbfrhrfh1rk!

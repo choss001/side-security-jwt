@@ -1,0 +1,31 @@
+# src/main/resources/application.yml
+#spring:
+#  datasource:
+#    dataSourceClassName: org.h2.jdbcx.JdbcDataSource
+#    url: jdbc:mysql://127.0.0.1:3306/?serverTimezone=UTC
+#    username: root
+#    password: dbfrhrfh1rk!
+#  jpa:
+#    database-platform: org.hibernate.dialect.H2Dialect
+#    database: H2
+#    generate-ddl: false
+#    open-in-view: false
+#    show-sql: true
+#    hibernate:
+#      ddl-auto: validate
+#      naming-strategy: org.hibernate.cfg.EJB3NamingStrategy
+#    properties:
+#      hibernate.cache.use_second_level_cache: true
+#      hibernate.cache.use_query_cache: false
+#      hibernate.generate_statistics: true
+#      hibernate.cache.region.factory_class: org.hibernate.cache.ehcache.SingletonEhCacheRegionFactor
+spring:
+  devtools:
+    livereload:
+      enabled: true
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/gradle_project?serverTimezone=UTC
+    username: root
+    password: dbfrhrfh1rk!
