@@ -31,7 +31,7 @@ $(document).ready(function() {
                     //'Content-Type': 'application/json'
                 //},
                 contentType: 'application/json',
-                dataType: 'json',
+                dataType: 'text',
                 data: JSON.stringify(form_data),
                 success: function(response) {
                     console.log("response",response);
@@ -42,14 +42,10 @@ $(document).ready(function() {
                     $('#msg').html("<p style='color:red'>아이디 또는 비밀번호가 잘못되었습니다.</p>");
                   }
                 },
-                error: function() {
+                error: function(data) {
+                	console.log("Data", data);
                   $('#msg').html("<h2>Error</h2>");
                 }
-      }).done(function (response){
-    	  console.log("response", response);
-    	 $('#msg').html(response) ;
-      }).fail(function (err){
-    	 $('#msg').html(err) ;
       });
     });
   });

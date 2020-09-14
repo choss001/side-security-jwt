@@ -67,7 +67,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/auth").permitAll()
                 .antMatchers(LOGIN_ENTRY_POINT).permitAll()
                 .antMatchers(ROOT_ENTRY_POINT).authenticated()
                 .antMatchers(TOKEN_ENTRY_POINT).permitAll()
@@ -77,6 +76,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public AntPathRequestMatcher antPathRequestMatcher() {
         return new AntPathRequestMatcher(LOGIN_ENTRY_POINT, HttpMethod.POST.name());
+//        return new AntPathRequestMatcher("/auth", HttpMethod.POST.name());
     }
 
     @Bean
@@ -90,7 +90,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public SkipPathRequestMatcher skipPathRequestMatcher() {
-        return new SkipPathRequestMatcher(Arrays.asList("/auth", LOGIN_ENTRY_POINT, TOKEN_ENTRY_POINT, ERROR_ENTRY_POINT));
+        return new SkipPathRequestMatcher(Arrays.asList(LOGIN_ENTRY_POINT, TOKEN_ENTRY_POINT, ERROR_ENTRY_POINT));
     }
 
     @Bean

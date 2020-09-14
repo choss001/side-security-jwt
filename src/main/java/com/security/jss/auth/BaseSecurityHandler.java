@@ -13,6 +13,7 @@ import org.springframework.web.server.ResponseStatusException;
 import com.security.jss.auth.jwt.JwtInfo;
 import com.security.jss.util.JwtUtil;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
@@ -25,6 +26,9 @@ public class BaseSecurityHandler implements AuthenticationSuccessHandler, Authen
 	                                    HttpServletResponse response,
 	                                    Authentication authentication) {
 		UserDetails userDetails = new UserDetailsImpl(authentication.getPrincipal().toString(), new ArrayList<>(authentication.getAuthorities()));
+		Cookie myCookie = new Cookie("token",JwtUtil.createToken(userDetails));
+		myCookie.setMaxAge(60*60*24);
+		response.addCookie(myCookie);
 		response.setContentType(MediaType.APPLICATION_JSON_VALUE);
 		response.setHeader(JwtInfo.HEADER_NAME, JwtUtil.createToken(userDetails));
 	}
