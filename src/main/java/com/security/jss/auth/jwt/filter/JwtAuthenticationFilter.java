@@ -28,19 +28,21 @@ public class JwtAuthenticationFilter extends AbstractAuthenticationProcessingFil
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request,
                                                 HttpServletResponse response) {
+      System.out.println("JwtAuthenticationFilter");
 //        String token = request.getHeader(JwtInfo.HEADER_NAME);
-    	Cookie[] myCookies = request.getCookies();
-    	String token = "";
-    	for(int i = 0; i < myCookies.length; i++) {
-    		System.out.println(i + "번째 쿠키 이름: " +myCookies[i].getName()+"???");
-    		System.out.println(i + "번째 쿠키 값: " +myCookies[i].getValue());
-    		token = myCookies[i].getValue();
-    	}
+        String token = request.getHeader("Authorization");
+        
+//    	Cookie[] myCookies = request.getCookies();
+//    	String token = "";
+//    	for(int i = 0; i < myCookies.length; i++) {
+//    		token = myCookies[i].getValue();
+//    	}
 
 
         if (StringUtils.isEmpty(token)) {
             throw new AccessDeniedException("Not empty Token");
         } else {
+//            return getAuthenticationManager().authenticate(new JwtAuthenticationToken(token.replaceAll("^[a-zA-Z\\s]{6}","")));
             return getAuthenticationManager().authenticate(new JwtAuthenticationToken(token));
         }
     }

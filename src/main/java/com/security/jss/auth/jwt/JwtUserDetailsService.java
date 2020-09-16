@@ -15,6 +15,7 @@ public class JwtUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String token) {
+      System.out.println("JwtUserDetailsService");
         DecodedJWT decodedJWT = JwtUtil.tokenToJwt(token);
 
         if (decodedJWT == null) {

@@ -24,6 +24,7 @@ public class AjaxAuthenticationFilter extends AbstractAuthenticationProcessingFi
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws IOException {
+      System.out.println("AjaxAuthenticationFilter");
         if (isJson(request)) {
         	System.out.println(request.getReader());
             Member member = objectMapper.readValue(request.getReader(), Member.class);

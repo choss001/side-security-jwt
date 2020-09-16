@@ -8,7 +8,9 @@ import org.springframework.security.authentication.dao.AbstractUserDetailsAuthen
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Component
 public class AjaxAuthenticationProvider extends AbstractUserDetailsAuthenticationProvider {
 
@@ -20,14 +22,19 @@ public class AjaxAuthenticationProvider extends AbstractUserDetailsAuthenticatio
 
     @Override
     protected void additionalAuthenticationChecks(UserDetails userDetails, UsernamePasswordAuthenticationToken authentication) {
+      System.out.println("AjaxAuthenticationProvider");
         if (authentication.getCredentials() == null) {
             throw new BadCredentialsException("Bad credentials");
         }
 
         String presentedPassword = authentication.getCredentials().toString();
         System.out.println(presentedPassword);
+        log.info(">>>>>>>>>>>presentedPassword ={}", presentedPassword);
+
         System.out.println(userDetails.getPassword());
-        System.out.println(passwordEncoder.encode("1234"));
+        log.info(">>>>>>>>>>>presentedPassword ={}", userDetails.getPassword());
+//        System.out.println(passwordEncoder.encode("1234"));
+        System.out.println(passwordEncoder.encode("dbfrhrfh1rk!"));
 
         if (!passwordEncoder.matches(presentedPassword, userDetails.getPassword())) {
             throw new BadCredentialsException("Bad credentials");

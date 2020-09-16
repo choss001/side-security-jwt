@@ -14,6 +14,7 @@ public class SkipPathRequestMatcher implements RequestMatcher {
 	private OrRequestMatcher skipRequestMatcher;
 	
 	public SkipPathRequestMatcher(List<String> skipPathList) {
+	  System.out.println("SkipPathRequestMatcher");
 		if(!skipPathList.isEmpty()) {
 			List<RequestMatcher> requestMatcherList = skipPathList.stream()
 																	.map(AntPathRequestMatcher::new)

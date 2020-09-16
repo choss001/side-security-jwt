@@ -19,13 +19,14 @@ public class AjaxUserDetailsService implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) {
+	  System.out.println("AjaxUserDetailService");
 //		Member user = repository.findById(username).orElse(null);
 		Member member = new Member();
 		member.setId(username);
 		memberService.getMemberUser(member);
 
 		if (memberService.getMemberUser(member) == null) {
-			throw new UsernameNotFoundException(username + "¶ó´Â »ç¿ëÀÚ°¡ ¾ø½À´Ï´Ù.");
+			throw new UsernameNotFoundException(username + "ì•„ì´ë””ê°€ ì—†ìŠµë‹ˆë‹¤.");
 		}
 
 		return new UserDetailsImpl(memberService.getMemberUser(member), AuthorityUtils.createAuthorityList(memberService.getMemberUser(member).getRole()));
